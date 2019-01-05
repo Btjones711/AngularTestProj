@@ -1,14 +1,21 @@
 <h1>My Angular App</h1>
-<p>This is something</p>
 
-<p>Result of 1 + 1 = {{1+1}}</p>
+<div>
+    <p>Hello, {{currentUser.username}}!</p>
 
-<p>Hello, {{username}}!</p>
+    <p [hidden]='hideEmail'> Your email is : <em>{{currentUser.email}}</em></p>
 
-<P>Hello, {{currentUser.username}} - {{currentUser.email}}</P>
+    <button (click)="toggle()">Toggle(click)</button>
+</div>
 
-<P>>Hello, {{currentUser.username + '-' + currentUser.email}}</P>
+<button (mouseleave)="toggle()">Toggle(mouseleave)</button>
 
-<P>Hello, {{getUsername()}}!</P>
+<input [disabled]="disabledInput" type="text" placeholder="Enter your text">
 
-<input value="{{getUsername()}}" type="text">
+<input [disabled]="isDisabled()" type="text" placeholder="Enter your text">
+
+<input [disabled]="isDisabled()" type="text" [value]="currentUser.username" placeholder="Enter your text">
+
+<input [class.blue-bg]="isBluebg" type="text" placeholder="Enter your text">
+
+<input [style.background-color]="bgColor" type="text" placeholder="Enter your text">

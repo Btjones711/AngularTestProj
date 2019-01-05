@@ -17,8 +17,17 @@ export class AppComponent  {
     return this.disabledInput
   }
 
+  private hideEmail:boolean = true
+
   private isBlueBg:boolean = true
   private bgColor:string = 'red'
+  private toggle() {
+    this.hideEmail = !this.hideEmail
+  }
+
+  private changeMail(newMail:string){
+    this.currentUser.email = newMail
+  }
 
   private getUsername():string {
     return this.currentUser.username
