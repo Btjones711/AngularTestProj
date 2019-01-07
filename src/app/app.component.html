@@ -8,9 +8,38 @@
     <button (click)="toggle()">Toggle(click)</button>
 </div>
 
-<button (mouseleave)="toggle()">Toggle(mouseleave)</button>
+<div>
+    <input type="text" #a>
+    <p>Value of input is: {{a.value}}</p>
+</div>
 
-<input [disabled]="disabledInput" type="text" placeholder="Enter your text">
+<div>
+    <input type="text" #b (keyup)="0">
+    <p>Value of input is: {{b.value}}</p>
+</div>
+
+<div>
+    <h3>Change email:</h3>
+    <input type="text" name="name" #newMail>
+
+    <button (click)="changeMail(newMail.value)">Change</button>
+</div>
+
+<div>
+    <h3>Change email:</h3>
+    <input type="text" #newMail2 (keyup)="keyPress($event)">
+    <button (click)="changeMail(newMail2.value)">Change</button>
+</div>
+
+<div>
+    <h3>Change email:</h3>
+    <input type="text" #newMail3 (keyup.enter)="changeMail(newMail3.value)">
+    <button (click)="changeMail(newMail3.value)">Change</button>
+</div>
+
+<!--button (mouseleave)="toggle()">Toggle(mouseleave)</button>-->
+
+<!-- <input [disabled]="disabledInput" type="text" placeholder="Enter your text">
 
 <input [disabled]="isDisabled()" type="text" placeholder="Enter your text">
 
@@ -18,4 +47,4 @@
 
 <input [class.blue-bg]="isBluebg" type="text" placeholder="Enter your text">
 
-<input [style.background-color]="bgColor" type="text" placeholder="Enter your text">
+<input [style.background-color]="bgColor" type="text" placeholder="Enter your text"> -->
