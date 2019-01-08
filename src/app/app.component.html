@@ -3,12 +3,19 @@
 <div>
     <p>Hello, {{currentUser.username}}!</p>
 
-    <p [hidden]='hideEmail'> Your email is : <em>{{currentUser.email}}</em></p>
+    <p *ngIf="!hideEmail"> Your email is: <em>{{currentUser.email}}</em></p>
 
     <button (click)="toggle()">Toggle(click)</button>
 </div>
 
-<div>
+<ul>
+    <li *ngFor="#user of users, #i=index">
+        ({{i+1}}) {{user.username}} - <em>{{user.email}}</em>
+    </li>
+</ul>
+
+
+<!-- <div>
     <input type="text" #a>
     <p>Value of input is: {{a.value}}</p>
 </div>
@@ -35,7 +42,7 @@
     <h3>Change email:</h3>
     <input type="text" #newMail3 (keyup.enter)="changeMail(newMail3.value)">
     <button (click)="changeMail(newMail3.value)">Change</button>
-</div>
+</div> -->
 
 <!--button (mouseleave)="toggle()">Toggle(mouseleave)</button>-->
 

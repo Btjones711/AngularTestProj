@@ -39,6 +39,13 @@ export class AppComponent  {
   private getUsername():string {
     return this.currentUser.username
   }
+
+  private users:Array<User> = [
+    { username: "User1", email:"user1@ex.com" },
+    { username: "User2", email:"user2@ex.com" },
+    { username: "User3", email:"user3@ex.com" },
+    { username: "User4", email:"user4@ex.com" }
+  ]
 }
 
 interface User {
