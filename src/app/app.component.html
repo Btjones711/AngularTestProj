@@ -1,57 +1,35 @@
-<h1>My Angular App</h1>
+<h1>Personal Finance</h1>
 
 <div>
-    <p>Hello, {{currentUser.username}}!</p>
+    <h2>
+        <div *ngIf="_accounts.length == 0">You don't have any accounts yet. Please add one.
+        </div>
 
-    <p *ngIf="!hideEmail"> Your email is: <em>{{currentUser.email}}</em></p>
-
-    <button (click)="toggle()">Toggle(click)</button>
+        <div *ngFor="#acc of _accounts, #i = index">
+            <h2>{{acc.title}} ({{acc.id}})</h2>
+            <p>{{acc.description}}</p>
+            <p>Balance: <strong>{{acc.balance}}</strong></p>
+            <button (click)="removeAcc(i)">Delete</button>
+        </div>
+    </h2>
+    <div>
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="" #title>
+        </div>
+    </div>
+    
+    <div>
+        <label for="desc">Description:</label>
+        <input type="text" name="desc" id="desc" value="" #desc>
+    </div>
+    
+    <div>
+        <label for="bal">Balance:</label>
+        <input type="number" name="bal" id="bal" value="0" #balance>
+    </div>
+    
+    <div>
+        <button (click)="createAcc(title,desc,balance)">Create</button>
+    </div>
 </div>
-
-<ul>
-    <li *ngFor="#user of users, #i=index">
-        ({{i+1}}) {{user.username}} - <em>{{user.email}}</em>
-    </li>
-</ul>
-
-
-<!-- <div>
-    <input type="text" #a>
-    <p>Value of input is: {{a.value}}</p>
-</div>
-
-<div>
-    <input type="text" #b (keyup)="0">
-    <p>Value of input is: {{b.value}}</p>
-</div>
-
-<div>
-    <h3>Change email:</h3>
-    <input type="text" name="name" #newMail>
-
-    <button (click)="changeMail(newMail.value)">Change</button>
-</div>
-
-<div>
-    <h3>Change email:</h3>
-    <input type="text" #newMail2 (keyup)="keyPress($event)">
-    <button (click)="changeMail(newMail2.value)">Change</button>
-</div>
-
-<div>
-    <h3>Change email:</h3>
-    <input type="text" #newMail3 (keyup.enter)="changeMail(newMail3.value)">
-    <button (click)="changeMail(newMail3.value)">Change</button>
-</div> -->
-
-<!--button (mouseleave)="toggle()">Toggle(mouseleave)</button>-->
-
-<!-- <input [disabled]="disabledInput" type="text" placeholder="Enter your text">
-
-<input [disabled]="isDisabled()" type="text" placeholder="Enter your text">
-
-<input [disabled]="isDisabled()" type="text" [value]="currentUser.username" placeholder="Enter your text">
-
-<input [class.blue-bg]="isBluebg" type="text" placeholder="Enter your text">
-
-<input [style.background-color]="bgColor" type="text" placeholder="Enter your text"> -->

@@ -1,54 +1,33 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Account} from './account.model';
 
 @Component({
   selector: 'my-app',
-  templateUrl: 'app/app.component.html',
-  styles: ['.blue-bg{background-color:blue;}']
+  templateUrl: 'app/app.component.html'
 })
 
-export class AppComponent  { 
-  name = 'Angular';
-  private username:string = "Test"
-  private currentUser:User = { username: "Test", email: "test@test.com" }
-  
-  private disabledInput:boolean = false
-
-  private isDisabled():boolean {
-    return this.disabledInput
-  }
-
-  private hideEmail:boolean = true
-
-  private isBlueBg:boolean = true
-  private bgColor:string = 'red'
-  private toggle() {
-    this.hideEmail = !this.hideEmail
-  }
-
-  private changeMail(newMail:string){
-    this.currentUser.email = newMail
-  }
-
-  private keyPress(event:KeyboardEvent){
-    if(event.keyCode == 13){
-      var inputElement = <HTMLInputElement>event.target
-      this.changeMail(inputElement.value)
-    }
-  }
-
-  private getUsername():string {
-    return this.currentUser.username
-  }
-
-  private users:Array<User> = [
-    { username: "User1", email:"user1@ex.com" },
-    { username: "User2", email:"user2@ex.com" },
-    { username: "User3", email:"user3@ex.com" },
-    { username: "User4", email:"user4@ex.com" }
+export class AppCompnent {
+  private _accounts:Array<Account> = [
+    {
+      id:1,
+      title:"Bank Xyz",
+      description:"This is my main bank account",
+      balance:501.2
+    },
+    new Account(2,"BankAsd", "My secret account.", 1024.10)
   ]
-}
 
-interface User {
-  username:string,
-  email:string
+  private _nextId = 3
+  private createAcc(titleEl:any, descEl:any, balEl:any){
+    this._accounts.push(new Account(this._nextId, titleEl.value, descEl.value,balEl.value))
+    this._nextId++
+
+    titleEl.value = ""
+    descEl.value = ""
+    balEl.value = 0
+  }
+
+  private removeAcc(index:number){
+    this._accounts.splice(index,1)
+  }
 }
