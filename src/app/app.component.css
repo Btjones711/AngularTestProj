@@ -1,0 +1,19 @@
+.info{
+    background-color: #A1DBF0;
+    padding: 10px 24px;
+    margin: 8px;
+}
+
+.acc {
+    background-color: #bbbbbb;
+    padding: 10px 24px;
+    margin: 8px;
+}
+
+.acc>*{
+    margin: 4px;
+}
+
+.selected {
+    background-color: #45EE50;
+}
