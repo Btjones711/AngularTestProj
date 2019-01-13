@@ -2,28 +2,8 @@
     <h1>Personal Finance</h1>
 
     <h2>Your accounts</h2>
-    <div class="row" *ngIf="_accounts.length == 0">
-        <div class="alert alert-info">
-            <strong>You don't have any accounts yet. </strong> Please add one.
-        </div> 
-    </div>
-
-    <div class="row">
-        <div class="acc col-md-12" *ngFor="#acc of _accounts, #i = index" [ngClass]="{
-            selected:_selected[i]}"]>
-            <h3>{{acc.title}}</h3>
-            <p>{{acc.description}}</p>
-            <p>Balance: <strong class="lead">{{acc.balance}}</strong></p>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <button class="btn btn-danger" (click)="removeAcc(i)">Delete</button>
-                    <button class="btn btn-primary" (click)="select(i)" >{{_selected[i] ? 'Deselect' : 'Select'}}</button>
-                </div>
-            </div>
-           
-        </div>
-    </div>
+    
+    <accounts-list></accounts-list>
 
     <div class="row">
         <form class="col-md-6">

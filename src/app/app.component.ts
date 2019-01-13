@@ -1,22 +1,18 @@
-import {Component} from '@angular/core';
-import {Account} from './account.model';
+import {Component, Directive} from '@angular/core';
+import {Account} from './account/account.model';
+import {AccountsList} from './account/accounts_list.component';
 
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
-  styleUrls:['app/app.component.css']
+  styleUrls:['app/app.component.css'],
+})
+
+@Directive({
+  selector:'[AccountsList]'
 })
 
 export class AppCompnent {
-  private _accounts:Array<Account> = [
-    {
-      id:1,
-      title:"Bank Xyz",
-      description:"This is my main bank account",
-      balance:501.2
-    },
-    new Account(2,"BankAsd", "My secret account.", 1024.10)
-  ]
 
   private _nextId = 3
   private createAcc(titleEl:any, descEl:any, balEl:any){
@@ -29,14 +25,5 @@ export class AppCompnent {
     balEl.value = 0
   }
 
-  private removeAcc(index:number){
-    this._accounts.splice(index, 1)
-    this._selected.splice(index, 1)
-  }
 
-  private _selected:Array<boolean> = [false,false]
-
-  private select(index:number){
-    this._selected[index] = !this._selected[index]
-  }
 }
